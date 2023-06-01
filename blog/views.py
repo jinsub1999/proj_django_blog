@@ -4,7 +4,14 @@ from .models import Post
 from .forms import PostForm
 from django.shortcuts import get_object_or_404, redirect
 
+from rest_framework import viewsets
+from .serializers import PostSerializer
+
 # Create your views here.
+
+class IntruderImage(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 def post_list(request):
     posts = Post.objects \
