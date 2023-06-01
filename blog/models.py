@@ -16,6 +16,8 @@ class Post(models.Model):
         blank=True,
         null=True
     )
+    image = models.ImageField(upload_to="intruder_image/%Y/%m/%d" \
+                              , default='intruder_image/default_error.png')
     
     def publish(self):
         self.published_date = timezone.now()
